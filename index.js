@@ -150,16 +150,8 @@ and should return a new array that is identical to the old array. You can name t
 function copy(newArr, origArr) {
 	newArr = [...origArr];
 	return newArr;
-
-	// OR //
-
-	// let copyArr = [];
-	// copyArr = origArr.map((flavor) => {
-	// 	return flavor;
-	// });
-
-	// return copyArr;
 }
+
 //OR
 
 // function copy(newArr, origArr) {
