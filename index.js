@@ -341,6 +341,65 @@ var regionalFlavors = [
 	"Caramel 'n' Cookies",
 ];
 
-function getRandomFlavors(/*code here*/) {
-	/*code here*/
+// https://bost.ocks.org/mike/shuffle/
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+
+function getRandomFlavors(arr1, arr2, arr3, arr4) {
+	// Combine all arrays
+	let allFlavorsArr = [...arr1, ...arr2, ...arr3, ...arr4];
+	// Shuffle new array with Fisher-Yates algorithm
+	function shuffle(array) {
+		let currentIndex = array.length,
+			temporaryValue,
+			randomIndex;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+		console.log(array);
+		return array;
+	}
+
+	// Invoke the suffle fxn
+	shuffle(allFlavorsArr);
+	// Shorten the array to 31 flavors by removing index 31 and on
+	allFlavorsArr.splice(31);
+
+	return allFlavorsArr;
+}
+
+console.log(
+	getRandomFlavors(
+		originalFlavors,
+		newFlavors,
+		seasonalFlavors,
+		regionalFlavors
+	).length
+);
+
+console.log(
+	getRandomFlavors(
+		originalFlavors,
+		newFlavors,
+		seasonalFlavors,
+		regionalFlavors
+	)
+);
+
+/* Randomize array in-place using Durstenfeld shuffle algorithm */
+function shuffleArray(array) {
+	for (var i = array.length - 1; i > 0; i--) {
+		var j = Math.floor(Math.random() * (i + 1));
+		var temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
 }
