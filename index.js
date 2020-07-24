@@ -160,6 +160,16 @@ function copy(newArr, origArr) {
 
 	// return copyArr;
 }
+//OR
+
+// function copy(newArr, origArr) {
+// 	let copyArr = [];
+// 	copyArr = origArr.map((flavor) => {
+// 		return flavor;
+// 	});
+
+// 	return copyArr;
+// }
 
 console.log(copy('backUp', originalFlavors));
 
@@ -178,9 +188,36 @@ DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem.
 
 hint - you can use the .includes method to help you solve this */
 
-function filterByWord(/*code here*/) {
-	/*code here*/
+// Without Array.prototype.filter()
+
+function filterByWord(array, flavor) {
+	let filteredArr = [];
+
+	for (let i = 0; i < array.length; i++) {
+		if (array[i].includes(flavor)) {
+			filteredArr.push(array[i]);
+		}
+	}
+
+	return filteredArr;
 }
+
+console.log(filterByWord(originalFlavors, 'Chocolate'));
+
+// With Array.prototype.filter()
+
+function filterByWordWithFilter(array, flavor) {
+	let filteredArr = [];
+
+	filteredArr = array.filter((item) => {
+		console.log(item);
+		return item.includes(flavor);
+	});
+
+	return filteredArr;
+}
+
+console.log(filterByWordWithFilter(originalFlavors, 'Chocolate'));
 
 /* 🧁🍦🍨 STRETCH 🍨🍦🍫*/
 
